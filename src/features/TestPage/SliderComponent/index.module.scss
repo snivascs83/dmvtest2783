@@ -1,0 +1,30 @@
+/* SliderComponent.module.css */
+
+.sliderContainer {
+  position: relative;
+  margin: 20px;
+}
+
+.customArrow {
+  position: absolute;
+  top: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.nextArrow {
+  right: 20px;
+}
+
+.prevArrow {
+  right: 80px; /* Adjust as needed */
+}
+
+.customArrow:hover {
+  background-color: #555;
+}

@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Poppins-Regular";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: local("Poppins-Regular"), url("Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Light";
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: local("Poppins-Light"), url("Poppins-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  src: local("Poppins-Bold"), url("Poppins-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  src: local("Poppins-SemiBold"), url("Poppins-SemiBold.ttf") format("truetype");
+}
+
+.font-Poppins-Light,
+.font-Poppins-LightItalic {
+  font-weight: 300;
+}
+
+.font-Poppins-Regular,
+.font-Poppins-RegularItalic {
+  font-weight: 400;
+}
+
+.font-Poppins-Bold,
+.font-Poppins-BoldItalic {
+  font-weight: 700;
+}
+
+.font-Poppins-Regular b,
+.font-Poppins-Light b,
+.font-Poppins-Regular strong,
+.font-Poppins-Light strong {
+  font-family: Poppins-Bold, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 700;
+}

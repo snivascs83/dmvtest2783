@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "/public/fonts/font-family.scss";
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Poppins-Regular, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  color: #3c5564;
+}
+
+.country-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.country-logo {
+  width: 35px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.selected-logo {
+  width: 35px;
+  height: 20px;
+  margin-right: 8px;
+}
+.css-1u9des2-indicatorSeparator {
+  display: none !important;
+}
+.css-1fdsijx-ValueContainer {
+  padding: 0 !important;
+}
+.css-b62m3t-container {
+  width: 160px;
+}
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
