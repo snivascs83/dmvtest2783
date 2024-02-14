@@ -12,10 +12,14 @@ variables:
   azureSubscription: '0524f8cb-2159-4f2c-bac6-680a0f09e7bb'
 
   # Web app name
-  webAppName: 'DevNodeApp'
+  webAppNameDev: 'DevNodeApp'
+  webAppNameQA: 'QANodeApp'
+  webAppNameProd: 'ProdNodeApp'
 
   # Environment name
-  environmentName: 'DevNodeApp'
+  environmentNameDev: 'DevNodeApp'
+  environmentNameQA: 'QANodeApp'
+  environmentNameProd: 'ProdNodeApp'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -53,14 +57,14 @@ stages:
     - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       artifact: drop
 
-- stage: Deploy
+- stage: Deploy to Dev
   displayName: Deploy to Dev
   dependsOn: Build
   condition: succeeded()
   jobs:
   - deployment: Deploy
     displayName: Deploy
-    environment: $(environmentName)
+    environment: $(environmentNameDev)
     pool:
       vmImage: $(vmImageName)
     strategy:
@@ -72,7 +76,53 @@ stages:
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
-              appName: $(webAppName)
+              appName: $(webAppNameDev)
+              runtimeStack: 'NODE|10.10'
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+              startUpCommand: 'npm run start'
+- stage: Deploy to QA
+  displayName: Deploy to QA
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: $(environmentNameQA)
+    pool:
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            displayName: 'Azure Web App Deploy: DevNodeApp'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: webAppLinux
+              appName: $(webAppNameQA)
+              runtimeStack: 'NODE|10.10'
+              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
+              startUpCommand: 'npm run start'
+- stage: Deploy to Prod
+  displayName: Deploy to Prod
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    environment: $(environmentNameProd)
+    pool:
+      vmImage: $(vmImageName)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureWebApp@1
+            displayName: 'Azure Web App Deploy: DevNodeApp'
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: webAppLinux
+              appName: $(webAppNameProd)
               runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'npm run start'
