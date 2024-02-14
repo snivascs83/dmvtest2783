@@ -95,7 +95,7 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: DevNodeApp'
+            displayName: 'Azure Web App Deploy: QANodeApp'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
@@ -118,7 +118,7 @@ stages:
         deploy:
           steps:
           - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: DevNodeApp'
+            displayName: 'Azure Web App Deploy: ProdNodeApp'
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
